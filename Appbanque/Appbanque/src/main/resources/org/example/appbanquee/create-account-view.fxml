@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.appbanquee.CreateAccountController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Création d'un nouveau compte" textAlignment="CENTER">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+    
+    <GridPane hgap="10" vgap="10" alignment="CENTER">
+        <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        
+        <Label text="Numéro de compte:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="numeroCompteField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        
+        <Label text="Solde initial:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="soldeInitialField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        
+        <Label text="Type de compte:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <RadioButton fx:id="compteCourantRadio" text="Compte Courant" selected="true">
+                <toggleGroup>
+                    <ToggleGroup fx:id="typeCompteGroup" />
+                </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="compteEpargneRadio" text="Compte Épargne" toggleGroup="$typeCompteGroup" />
+        </HBox>
+        
+        <Label fx:id="decouvertLabel" text="Découvert autorisé:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <TextField fx:id="decouvertField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        
+        <Label fx:id="tauxInteretLabel" text="Taux d'intérêt:" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <TextField fx:id="tauxInteretField" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    </GridPane>
+    
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Créer" onAction="#onCreateButtonClick" />
+        <Button text="Annuler" onAction="#onCancelButtonClick" />
+    </HBox>
+    
+    <Label fx:id="messageLabel" textFill="RED" />
+</VBox>
